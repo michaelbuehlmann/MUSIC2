@@ -11,13 +11,13 @@ To learn how to use MUSIC, please [read the Wiki](https://github.com/cosmo-sims/
 
 Current MUSIC key features include:
 
-- Supports output for RAMSES, ENZO, Arepo, Swift, Gadget-2/3, ART, Pkdgrav/Gasoline, NyX, and GAMER-2 via plugins. New codes can be added.
+- Supports output for RAMSES, ENZO, Arepo, Swift, Gadget-2/3, ART, Pkdgrav/Gasoline, NyX, GAMER-2, and HACC (GenericIO) via plugins. New codes can be added.
 - Support for first (1LPT) and second order (2LPT) Lagrangian perturbation theory.
 - Full integration of the [PANPHASIA](https://arxiv.org/abs/1306.5968) hierarchical Gaussian random fields
 - Pluggable transfer functions, currently CAMB, Eisenstein&Hu, BBKS, Warm Dark Matter variants. Distinct baryon+CDM fields.
 - Minimum bounding ellipsoid and convex hull shaped high-res regions supported with most codes, supports refinement mask generation for RAMSES.
 - Parallelized with OpenMP
-- Requires FFTW3, GSL (and HDF5 for output for some codes)
+- Requires FFTW3, GSL (and HDF5 for output for some codes; MPI for HACC output, which is built with `-DENABLE_GENERICIO=ON`)
 
 ## Building MUSIC
 While we still supply the old Makefile, using CMake is now the preferred way of building. CMake use out-of-source build, i.e. you create a build directory, and then configure the code using CMake. Inside the `music` directory, do

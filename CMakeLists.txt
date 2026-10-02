@@ -204,6 +204,19 @@ endif(ENABLE_PANPHASIA)
 
 
 ########################################################################################################################
+# include GenericIO, for the HACC output plugin
+option(ENABLE_GENERICIO "Enable GenericIO output for HACC (fetches GenericIO, needs MPI)." OFF)
+
+if(ENABLE_GENERICIO)
+  find_package(MPI REQUIRED COMPONENTS CXX)
+  include(${CMAKE_CURRENT_SOURCE_DIR}/ext/genericio.cmake)
+  target_link_libraries(${PRGNAME} PRIVATE genericio::genericio_mpi)
+  target_compile_definitions(${PRGNAME} PRIVATE "ENABLE_GENERICIO")
+endif()
+########################################################################################################################
+
+
+########################################################################################################################
 # include CLASS
 option(ENABLE_CLASS "Enable CLASS support (as a submodule)." ON)
   
