@@ -201,7 +201,9 @@ public:
                     m_tab_k.size()); //>[150609SH: add]
 
     tf_distinct_ = true; // [150612SH: different density between CDM v.s. Baryon]
-    tf_withvel_  = true; // [150612SH: using velocity transfer function]
+    // camb_velocities = no: velocities from the density field and the growth rate, as for a z=0
+    // transfer function scaled back with D(z). The velocity columns must still be present.
+    tf_withvel_ = pcf_->get_value_safe<bool>("cosmology", "camb_velocities", true);
   }
 
   ~transfer_CAMB_plugin() {
